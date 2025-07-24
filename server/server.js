@@ -4,6 +4,10 @@ const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
 
+const cardRouter = require("./routes/cardRoutes");
+
+const errorHandler = require("./middlewares/errorHandler");
+
 const app = express();
 const port = process.env.PORT || 8800;
 
@@ -11,6 +15,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors({ origin: process.env.CORS_ORIGIN }));
+
+// all routes
+app.use("/api/v1/cards", cardRouter);
+
+// Centralized error handling middleware
+app.use(errorHandler);
 
 app.listen(port, async() => {
   try {
