@@ -15,9 +15,9 @@ const handleGlobalError = (error, handleFormError) => {
 
   if (error?.response) {
     type = "response";
-    const status = error.response.status;
+    status = error.response.status;
     message = error.response.data.message || message;
-    let details = error.response.data.details || details;
+    details = error.response.data.details || details;
 
     // Normalize details to string
     if (Array.isArray(details)) {
@@ -30,7 +30,8 @@ const handleGlobalError = (error, handleFormError) => {
       details = "Please try again.";
     }
 
-    console.log("error details: " + details);
+    console.log("[GlobalErrorHandler] error details: " + details);
+    console.log("[GlobalErrorHandler] error message: " + message);
     console.log(`error status === 400: ${status === 400}`);
     console.log("has handleFormError: " + handleFormError);
 
