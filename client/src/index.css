@@ -1,16 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Poppins, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-accent: Fredoka, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  --color-background: var(--background);
+  --color-text: var(--text);
+  --color-sidebar: var(--sidebar);
+  --color-hover: var(--hover);
+  --color-gray: var(--gray);
+  --color-brown: var(--brown);
+  --color-orange: var(--orange);
+  --color-yellow: var(--yellow);
+  --color-green: var(--green);
+  --color-blue: var(--blue);
+  --color-purple: var(--purple);
+  --color-pink: var(--pink);
+  --color-red: var(--red);
+  --color-bg-gray: var(--bg-gray);
+  --color-bg-brown: var(--bg-brown);
+  --color-bg-orange: var(--bg-orange);
+  --color-bg-yellow: var(--bg-yellow);
+  --color-bg-green: var(--bg-green);
+  --color-bg-blue: var(--bg-blue);
+  --color-bg-purple: var(--bg-purple);
+  --color-bg-pink: var(--bg-pink);
+  --color-bg-red: var(--bg-red);
+  --color-btn-primary-bg: var(--btn-primary-bg);
+  --color-btn-primary-hover: var(--btn-primary-hover);
+  --color-btn-primary-text: var(--btn-primary-text);
+  --color-btn-primary-border: var(--btn-primary-border);
+  --color-btn-secondary-bg: var(--btn-secondary-bg);
+  --color-btn-secondary-hover: var(--btn-secondary-hover);
+  --color-btn-secondary-text: var(--btn-secondary-text);
+  --color-btn-secondary-border: var(--btn-secondary-border);
+  --color-btn-tertiary-bg: var(--btn-tertiary-bg);
+  --color-btn-tertiary-hover: var(--btn-tertiary-hover);
+  --color-btn-tertiary-text: var(--btn-tertiary-text);
+  --color-btn-tertiary-border: var(--btn-tertiary-border);
+  --color-btn-danger-bg: var(--btn-danger-bg);
+  --color-btn-danger-hover: var(--btn-danger-hover);
+  --color-btn-danger-text: var(--btn-danger-text);
+  --color-btn-danger-border: var(--btn-danger-border);
+  --color-btn-disabled-bg: var(--btn-disabled-bg);
+  --color-btn-disabled-hover: var(--btn-disabled-hover);
+  --color-btn-disabled-text: var(--btn-disabled-text);
+  --color-btn-disabled-border: var(--btn-disabled-border);
+  --text-base: 0.875rem;
+  --text-sm: 0.75rem;
+  --text-xs: 0.65rem;
+  --text-lg: 1rem;
+  --text-xl: 1.125rem;
+  --text-2xl: 1.25rem;
+  --text-3xl: 1.5rem;
+  --text-4xl: 1.875rem;
+  --text-5xl: 2.25rem;
+  --text-9xl: 6rem;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  /* color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #242424; */
+
+  --background: #F1F1EF;
+  --text: #373530;
+  --sidebar: #F7F6F3;
+  --hover: #FFFFFF;
+  --gray: #787774;
+  --brown: #976D57;
+  --orange: #CC782F;
+  --yellow: #C29343;
+  --green: #548164;
+  --blue: #487CA5;
+  --purple: #8A67AB;
+  --pink: #B35488;
+  --red: #C4554D;
+  --bg-gray: #F1F1EF;
+  --bg-brown: #F3EEEE;
+  --bg-orange: #F8ECDF;
+  --bg-yellow: #FAF3DD;
+  --bg-green: #EEF3ED;
+  --bg-blue: #E9F3F7;
+  --bg-purple: #F6F3F8;
+  --bg-pink: #F9F2F5;
+  --bg-red: #FAECEC;
+  --btn-primary-bg: #0075DE;
+  --btn-primary-hover: #005BAB;
+  --btn-primary-text: #FFFFFF;
+  --btn-primary-border: "transparent";
+  --btn-secondary-bg: #F2F9FF;
+  --btn-secondary-hover: #E6F1FA;
+  --btn-secondary-text: #005BAB;
+  --btn-secondary-border: "transparent";
+  --btn-tertiary-bg: #FFFFFF;
+  --btn-tertiary-hover: #F6F5F4;
+  --btn-tertiary-text: #191918;
+  --btn-tertiary-border: #F6F5F4;
+  --btn-danger-bg: #0075DE;
+  --btn-danger-hover: #DE555540;
+  --btn-danger-text: #DE5550;
+  --btn-danger-border: #522e2a;
+  --btn-disabled-bg: #A39E98;
+  --btn-disabled-hover: #615d59;
+  --btn-disabled-text: #31302e;
+  --btn-disabled-border: "transparent";
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.dark{
+  --background: #191919;
+  --text: #D4D4D4;
+  --sidebar: #202020;
+  --hover: #2c2c2c;
+  --gray: #9B9B9B;
+  --brown: #A27763;
+  --orange: #CB7B37;
+  --yellow: #C19138;
+  --green: #4F9768;
+  --blue: #447ACB;
+  --purple: #865DBB;
+  --red: #BE524B;
+  --bg-gray: #252525;
+  --bg-brown: #2E2724;
+  --bg-orange: #36291F;
+  --bg-yellow: #372E20;
+  --bg-green: #242B26;
+  --bg-blue: #1F282D;
+  --bg-purple: #2A2430;
+  --bg-pink: #2E2328;
+  --bg-red: #332523;
+  --btn-primary-bg: #0075DE;
+  --btn-primary-hover: #005BAB;
+  --btn-primary-text: #FFFFFF;
+  --btn-primary-border: "transparent";
+  --btn-secondary-bg: #F2F9FF;
+  --btn-secondary-hover: #E6F1FA;
+  --btn-secondary-text: #005BAB;
+  --btn-secondary-border: "transparent";
+  --btn-tertiary-bg: "transparent";
+  --btn-tertiary-hover: #2c2c2c;
+  --btn-tertiary-text: #D4D4D4;
+  --btn-tertiary-border: #9B9B9B;
+  --btn-danger-bg: #0075DE;
+  --btn-danger-hover: #DE555540;
+  --btn-danger-text: #DE5550;
+  --btn-danger-border: #522e2a;
+  --btn-disabled-bg: #A39E98;
+  --btn-disabled-hover: #615d59;
+  --btn-disabled-text: #31302e;
+  --btn-disabled-border: "transparent";
 }
 
 a {
@@ -35,7 +186,13 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+button[aria-disabled="true"] {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none; /* Optional: prevents hover */
+}
+
+/* button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -65,4 +222,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
