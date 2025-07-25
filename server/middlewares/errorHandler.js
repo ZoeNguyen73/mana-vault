@@ -7,23 +7,39 @@ const defaultErrorMessages = {
 };
 
 const errorHandler = (error, req, res, next) => {
-  console.log("original error: " + JSON.stringify(error));
+  console.error("original error:", {
+    name: error.name,
+    message: error.message,
+    stack: error.stack,
+    statusCode: error.statusCode,
+    details: error.details,
+    code: error.code,
+  });
 
   // set default error response
   const statusCode = error.statusCode || 500;
   // update error.message to follow the default message
-  const errMessage = defaultErrorMessages[statusCode];
+  const errMessage = defaultErrorMessages[statusCode] || "Unexpected Error";
   // if there exists an error.message, to move the message to the details property
   const errDetails = error.details || error.message;
 
-  const updatedError = {
-    ... error, 
+  const responsePayload = {
+    statusCode: statusCode,
+    success: false, 
     message: errMessage, 
     details: errDetails,
   };
 
+  // include error.name if useful
+  if (error.name && error.name !== "Error") responsePayload.name = error.name;
+
+  // Only include stack in development
+  if (process.env.NODE_ENV === "development") {
+    responsePayload.stack = error.stack;
+  }
+
   // send error response
-  res.status(statusCode).json(updatedError);
+  res.status(statusCode).json(responsePayload);
 };
 
 module.exports = errorHandler;

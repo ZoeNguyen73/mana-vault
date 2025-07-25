@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
 
-const LANG_ENUM = [ "en", "jp" ];
-const FINISH_NUM = ["foil", "nonfoil", "etched"];
-const RARITY_ENUM = ["common", "uncommon", "rare", "special", "mythic", "bonus"];
-const COLOR_ENUM = ["W", "U", "B", "R", "G"];
+const { LANG_ENUM, FINISH_ENUM, RARITY_ENUM, COLOR_ENUM } = require("../utils/cardAttributes");
 
 const cardFaceSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -39,12 +36,12 @@ const cardSchema = new mongoose.Schema({
   },
   full_art: { type: Boolean, required: true, default: false },
   reserved: { type: Boolean, required: true, default: false },
-  finishes: { type: String, enum: FINISH_NUM, required: true, default: "nonfoil" },
+  finish: { type: String, enum: FINISH_ENUM, required: true, default: "nonfoil" },
   oversized: { type: Boolean, required: true },
   textless: { type: Boolean, required: true },
 
   promo: { type: Boolean, required: true },
-  promo_types: { type: String },
+  promo_types: { type: [{type: String}] },
   reprint: { type: Boolean, required: true },
   booster: { type: Boolean, required: true },
   rarity: { type: String, enum: RARITY_ENUM, required: true },
@@ -57,7 +54,8 @@ const cardSchema = new mongoose.Schema({
   edhrec_rank: { type: Number },
   legalities: { type: Object, default: {} },
   prices: { type: cardPricesSchema, required: true, default: {} },
-  prices_updated_at: { type: Date },
+
+  scryfall_last_updated_at: { type: Date },
     
   quantity: { type: Number, required: true, default: 0 },
   location: { type: String },
